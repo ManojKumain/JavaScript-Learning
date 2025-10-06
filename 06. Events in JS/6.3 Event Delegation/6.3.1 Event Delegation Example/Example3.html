@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2: To-Do List Buttons</title>
+</head>
+
+<body>
+    <ul id="todo-list">
+        <li>Learn JS <button>Done</button></li>
+        <li>Practice DOM <button>Done</button></li>
+        <li>Build a project <button>Done</button></li>
+    </ul>
+
+    <script>
+        const toDoList = document.querySelector("#todo-list")
+
+        toDoList.addEventListener("click", function(e) {
+            if(e.target.tagName === "BUTTON") {
+              e.target.parentElement.remove();    
+            }
+        })
+    </script>
+</body>
+
+</html>
