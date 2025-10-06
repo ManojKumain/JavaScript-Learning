@@ -1,24 +1,16 @@
-function add(a, b) {
-    return a + b;
-} 
+// For Shorter Syntax used arrow functions:
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
 
-function subtract(a, b) {
-    return a - b;
-} 
 
-function multiply(a, b) {
-    return a * b;
-} 
-
+// Used switch for cleaner logic
 function calculator(a, b, operation) {
-    if (operation === "add") {
-        return add(a, b);
-    } else if (operation === "subtract") {
-        return subtract(a, b);
-    } else if (operation === "multiply") {
-        return multiply(a, b);
-    } else {
-        console.log("Invalid Operation")
+    switch(operation) {
+        case "add": return add(a, b);
+        case "subtract": return subtract(a, b);
+        case "multiply": return multiply(a, b);
+        default: return "Invalid Operation";
     }
 }
 
