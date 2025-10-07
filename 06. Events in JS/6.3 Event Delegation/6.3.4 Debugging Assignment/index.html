@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buggy Color Palette</title>
+</head>
+
+<body>
+    <div id="palette">
+        <div class="color-box" data-color="red" style="width:50px;height:50px;background:red;"></div>
+        <div class="color-box" data-color="green" style="width:50px;height:50px;background:green;"></div>
+        <div class="color-box" data-color="blue" style="width:50px;height:50px;background:blue;"></div>
+    </div>
+
+    <p id="status">Click a color box to change the background!</p>
+
+    <script>
+        const palette = document.querySelector("#palette");
+        const status = document.querySelector("#status");
+
+        palette.addEventListener("click", function (e) {
+            if (e.target.classList.contains("color-box")) {
+                const color = e.target.dataset.color;
+                document.body.style.backgroundColor = color;
+                status.style.color = "white";
+                status.textContent = "Background changed to " + color;
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>
