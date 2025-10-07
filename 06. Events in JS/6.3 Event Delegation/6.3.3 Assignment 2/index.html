@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic To-Do List with Event Delegation</title>
+</head>
+
+<body>
+    <h1>My To-Do List</h1>
+    <input type="text" id="todo-input" placeholder="Enter new task">
+    <button id="add-btn">Add Task</button>
+
+    <ul id="todo-list">
+        <li>Learn JS <button>Done</button></li>
+        <li>Practice DOM <button>Done</button></li>
+    </ul>
+
+    <script>
+
+        //   1. Select elements
+        const input = document.querySelector("#todo-input");
+        const addBtn = document.querySelector("#add-btn");
+        const todoList = document.querySelector("#todo-list");
+
+        // 2. Add new tasks dynamically
+        addBtn.addEventListener("click", function(){
+
+            // remove extra spaces
+            const task = input.value.trim(); 
+
+            // don't add empty tasks
+            if (task === "") return;
+
+            // create new li
+            const li = document.createElement("li");
+            li.innerHTML = `${task} <button>Done</button>`;
+
+            // append to the list
+            todoList.appendChild(li);
+
+            // clear input
+            input.value = "";
+        })
+
+
+        // 3. Use event delegation to remove tasks
+        todoList.addEventListener("click", function(e){
+
+            // check if the clicked element is a button
+            if (e.target.tagName === "BUTTON") {
+
+                if (confirm("Are you sure you want to remove this task?")) {
+                    // remove the li
+                e.target.parentElement.remove();
+                }
+                
+            }
+        })
+
+
+    </script>
+
+</body>
+
+</html>
